@@ -24,8 +24,10 @@ class _MyAppState extends State<MyApp> {
         title: 'Sleep Well',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          fontFamily: 'Open Sans'
         ),
         home: Scaffold(
+          backgroundColor: AppColors.backgroundColor,
           bottomNavigationBar: Container(
               color: AppColors.foregroundColor,
               child: Padding(
