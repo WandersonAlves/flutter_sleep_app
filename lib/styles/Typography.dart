@@ -22,13 +22,13 @@ class TypographyStyles {
   static final TextStyle subTitle = TextStyle(
     color: Colors.grey[600],
     fontSize: 15,
-    fontWeight: FontWeight.w500
+    fontWeight: FontWeight.w400
   );
 
   static final TextStyle link = TextStyle(
     color: AppColors.accentColor,
     fontSize: 15,
-    fontWeight: FontWeight.w500
+    fontWeight: FontWeight.w400
   );
 
   static final TextStyle simpleButton = TextStyle(
