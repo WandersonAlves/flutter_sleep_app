@@ -3,43 +3,73 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_sleep_app/common/Utils.dart';
 import 'package:flutter_sleep_app/styles/Typography.dart';
 import 'package:flutter_sleep_app/widgets/AppBiggerCard.dart';
+import 'package:flutter_sleep_app/widgets/AppCard.dart';
 import 'package:flutter_sleep_app/widgets/AppIcon.dart';
 import 'package:flutter_sleep_app/widgets/AppSimpleButton.dart';
 import 'package:flutter_sleep_app/widgets/SectionLabel.dart';
 
 class Home extends StatelessWidget {
+
+  buildLayout(List<Widget> children) {
+    return LayoutBuilder(
+        builder:
+            (BuildContext context, BoxConstraints viewportConstraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints:
+                  BoxConstraints(minHeight: viewportConstraints.maxHeight),
+              child: Column(children: children),
+            ),
+          );
+        },
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 32.0, top: 32.0),
-      child: Container(
-        margin: EdgeInsets.only(top: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HomeHeader(),
-            SizedBox(height: 20),
-            Container(
-              height: 42,
-              child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: buildButtons()
-                ),
-            ),
-            SizedBox(height: 20),
-            RecommendedRow(),
-            SizedBox(height: 20),
-            Container(
-              height: 158,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: buildBiggerCards()
+    return this.buildLayout([
+      Padding(
+        padding: EdgeInsets.only(left: 32.0, top: 32.0),
+        child: Container(
+          margin: EdgeInsets.only(top: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HomeHeader(),
+              SizedBox(height: 20),
+              Container(
+                height: 42,
+                child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: buildButtons()
+                  ),
               ),
-            )
-          ],
+              SizedBox(height: 20),
+              RecommendedRow(),
+              SizedBox(height: 20),
+              Container(
+                height: 158,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: buildBiggerCards()
+                ),
+              ),
+              SizedBox(height: 20),
+              Text('Recent', style: TypographyStyles.subTitle),
+              SizedBox(height: 20),
+              // TODO GridView with two columns
+              // GridView.builder(
+              //   itemCount: 4,
+              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              //   itemBuilder: (BuildContext ctx, int index) {
+              //     return AppCard();
+              //   },
+              // )
+            ],
+          ),
         ),
-      ),
-    );
+      )
+    ]);
   }
 
   List<Widget> buildButtons() {

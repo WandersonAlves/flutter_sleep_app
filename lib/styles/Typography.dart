@@ -14,6 +14,7 @@ class TypographyStyles {
     color: Colors.white,
     fontSize: 22
   );
+
   static final TextStyle cardSubtitle = TextStyle(
     fontWeight: FontWeight.w300,
     color: Colors.white,
