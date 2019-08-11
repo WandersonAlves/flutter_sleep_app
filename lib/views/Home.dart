@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_sleep_app/common/Utils.dart';
-import 'package:flutter_sleep_app/styles/Colors.dart';
 import 'package:flutter_sleep_app/styles/Typography.dart';
 import 'package:flutter_sleep_app/views/widgets/RecentCards.dart';
 import 'package:flutter_sleep_app/views/widgets/RecommendedCards.dart';
-import 'package:flutter_sleep_app/widgets/AppCard.dart';
 import 'package:flutter_sleep_app/widgets/AppIcon.dart';
 import 'package:flutter_sleep_app/widgets/AppSimpleButton.dart';
 import 'package:flutter_sleep_app/widgets/SectionLabel.dart';
@@ -29,7 +27,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return this.buildLayout([
       Padding(
-        padding: EdgeInsets.only(left: 32.0, top: 32.0),
+        padding: EdgeInsets.only(left: 32.0, top: 32.0, bottom: 32),
         child: Container(
           margin: EdgeInsets.only(top: 20),
           child: Column(
