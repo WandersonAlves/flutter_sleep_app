@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
           fontFamily: 'Open Sans'
         ),
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           backgroundColor: AppColors.backgroundColor,
           bottomNavigationBar: Container(
