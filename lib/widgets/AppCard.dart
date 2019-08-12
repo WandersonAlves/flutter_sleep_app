@@ -52,7 +52,7 @@ class AppCard extends StatelessWidget {
                     height: height * 1.4,
                     width: width * 1.4,
                     decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.35),
+                        color: Colors.white.withOpacity(0.15),
                         shape: BoxShape.circle),
                   ),
                 ),
