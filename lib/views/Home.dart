@@ -5,7 +5,7 @@ import 'package:flutter_sleep_app/styles/Typography.dart';
 import 'package:flutter_sleep_app/views/widgets/RecentCards.dart';
 import 'package:flutter_sleep_app/views/widgets/RecommendedCards.dart';
 import 'package:flutter_sleep_app/widgets/AppIcon.dart';
-import 'package:flutter_sleep_app/widgets/AppSimpleButton.dart';
+import 'package:flutter_sleep_app/widgets/AppChip.dart';
 import 'package:flutter_sleep_app/widgets/SectionLabel.dart';
 import 'package:flutter_sleep_app/widgets/Separator.dart';
 
@@ -60,10 +60,10 @@ class Home extends StatelessWidget {
 
   List<Widget> buildButtons() {
     return Utils.childrenWithSeparator('row', size: 15, children: [
-      AppSimpleButton(text: 'Insomnia'),
-      AppSimpleButton(text: 'Baby Sleep', isSelected: false),
-      AppSimpleButton(text: 'Sadness', isSelected: false),
-      AppSimpleButton(text: 'Anxiety', isSelected: false),
+      AppChip(text: 'Insomnia'),
+      AppChip(text: 'Baby Sleep', isSelected: false),
+      AppChip(text: 'Sadness', isSelected: false),
+      AppChip(text: 'Anxiety', isSelected: false),
     ]);
   }
 }

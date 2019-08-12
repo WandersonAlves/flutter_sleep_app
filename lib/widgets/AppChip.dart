@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sleep_app/styles/Colors.dart';
 import 'package:flutter_sleep_app/styles/Typography.dart';
 
-class AppSimpleButton extends StatelessWidget {
+class AppChip extends StatelessWidget {
 
   final String text;
   final bool isSelected;
 
-  AppSimpleButton({ @required this.text, this.isSelected = true });
+  AppChip({ @required this.text, this.isSelected = true });
 
   @override
   Widget build(BuildContext context) {
