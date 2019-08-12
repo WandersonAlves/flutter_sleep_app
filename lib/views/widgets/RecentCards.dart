@@ -27,10 +27,16 @@ class RecentCards extends StatelessWidget {
     if (res == null) {
       return [];
     }
-    final parsed = json.decode(res.toString()).cast<Map<String, dynamic>>();
-    return parsed
-        .map<RecommendedItem>((json) => RecommendedItem.fromJSON(json))
-        .toList();
+    final decoded = json.decode(res.toString());
+    if (decoded != null) {
+      final parsed = decoded.cast<Map<String, dynamic>>();
+      return parsed
+          .map<RecommendedItem>((json) => RecommendedItem.fromJSON(json))
+          .toList();
+    }
+    else {
+      return [];
+    }
   }
 
   FutureBuilder<String> recentCardsFutureBuilder(BuildContext context) {
