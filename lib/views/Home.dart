@@ -10,6 +10,7 @@ import 'package:flutter_sleep_app/views/widgets/RecommendedCards.dart';
 import 'package:flutter_sleep_app/widgets/AppIcon.dart';
 import 'package:flutter_sleep_app/widgets/AppSimpleButton.dart';
 import 'package:flutter_sleep_app/widgets/SectionLabel.dart';
+import 'package:flutter_sleep_app/widgets/Separator.dart';
 
 class Home extends StatelessWidget {
 
@@ -38,6 +39,7 @@ class Home extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               HomeHeader(),
+              Separator(),
               SizedBox(height: 20),
               Container(
                 height: 42,
@@ -89,7 +91,7 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.baseline,
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       textBaseline: TextBaseline.alphabetic,
       children: [
