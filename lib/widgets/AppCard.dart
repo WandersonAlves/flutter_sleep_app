@@ -56,6 +56,12 @@ class AppCard extends StatelessWidget {
                         shape: BoxShape.circle),
                   ),
                 ),
+                Positioned.fill(
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(onTap: () {}),
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.all(15.0),
                   child: this.body,
