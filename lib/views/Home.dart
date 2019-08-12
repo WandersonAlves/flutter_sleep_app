@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_sleep_app/common/Utils.dart';
+import 'package:flutter_sleep_app/model/RecommendedItem.dart';
 import 'package:flutter_sleep_app/styles/Typography.dart';
 import 'package:flutter_sleep_app/views/widgets/RecentCards.dart';
 import 'package:flutter_sleep_app/views/widgets/RecommendedCards.dart';
@@ -9,7 +12,8 @@ import 'package:flutter_sleep_app/widgets/AppSimpleButton.dart';
 import 'package:flutter_sleep_app/widgets/SectionLabel.dart';
 
 class Home extends StatelessWidget {
-  buildLayout(List<Widget> children) {
+
+  LayoutBuilder buildLayout(List<Widget> children) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints viewportConstraints) {
         return SingleChildScrollView(

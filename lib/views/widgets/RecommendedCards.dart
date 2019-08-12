@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_sleep_app/common/Utils.dart';
+import 'package:flutter_sleep_app/model/RecommendedItem.dart';
 import 'package:flutter_sleep_app/styles/Colors.dart';
 import 'package:flutter_sleep_app/styles/Typography.dart';
 import 'package:flutter_sleep_app/widgets/AppCard.dart';
@@ -20,36 +23,53 @@ class RecommendedCardDefault extends StatelessWidget {
 }
 
 class RecommendedCards extends StatelessWidget {
+  List<RecommendedItem> parseJSON(String res) {
+    if (res == null) {
+      return [];
+    }
+    final parsed = json.decode(res.toString()).cast<Map<String, dynamic>>();
+    return parsed
+        .map<RecommendedItem>((json) => RecommendedItem.fromJSON(json))
+        .toList();
+  }
+
+  FutureBuilder<String> recommendedItemsFutureBuilder(BuildContext context) {
+    return FutureBuilder(
+      future: DefaultAssetBundle.of(context)
+          .loadString('assets/json/recommendedItems.json'),
+      builder: (context, snapshot) {
+        List<RecommendedItem> items = parseJSON(snapshot.data.toString());
+        return items.isNotEmpty
+            ? ListView(
+              scrollDirection: Axis.horizontal,
+              children: Utils.childrenWithSeparator('row', size: 15, children: items.map((item) {
+                  return RecommendedCardDefault(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(item.title, style: TypographyStyles.cardTitle),
+                        SizedBox(height: 5),
+                        Text(item.subTitle, style: TypographyStyles.cardSubtitle),
+                        Expanded(child: SizedBox()),
+                        Row(
+                          children: Utils.childrenWithSeparator('row', size: 5, children: item.icons)
+                        )
+                      ],
+                    ),
+                    color: item.color,
+                  );
+                }).toList()),
+            )
+            : SizedBox();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 158,
-      child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: Utils.childrenWithSeparator('row', size: 15, children: [
-            RecommendedCardDefault(
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Sleep Meditation', style: TypographyStyles.cardTitle),
-                  SizedBox(height: 5),
-                  Text('7 days audio series',
-                      style: TypographyStyles.cardSubtitle),
-                  Expanded(child: SizedBox()),
-                  Row(
-                    children: [
-                      Icon(Icons.headset, color: Colors.white),
-                      SizedBox(width: 5),
-                      Icon(Icons.movie, color: Colors.white)
-                    ],
-                  )
-                ],
-              ),
-            ),
-            RecommendedCardDefault(null, color: Colors.redAccent),
-            RecommendedCardDefault(null, color: Colors.teal),
-            RecommendedCardDefault(null, color: Colors.orange),
-          ])),
+      child: recommendedItemsFutureBuilder(context)
     );
   }
 }
