@@ -9,7 +9,13 @@ class AppIcon extends StatelessWidget {
   final Color color;
 
   AppIcon(
-      {this.isSelected = false, @required this.icon, this.onTap, this.color});
+    {
+      this.isSelected = false,
+      @required this.icon,
+      this.onTap,
+      this.color
+    }
+  );
 
   @override
   Widget build(BuildContext context) {

@@ -47,25 +47,26 @@ class RecentCards extends StatelessWidget {
         List<RecommendedItem> items = parseJSON(snapshot.data.toString());
         return items.isNotEmpty
             ? Container(
-              child: Wrap(
-              direction: Axis.horizontal,
-              runSpacing: 20,
-              spacing: 20,
-              children: items.map((item) {
-                  return RecentCardDefault(
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(item.title, style: TypographyStyles.cardTitle),
-                        Expanded(child: SizedBox()),
-                        Row(
-                          children: Utils.childrenWithSeparator('row', size: 5, children: item.icons)
-                        )
-                      ],
-                    ),
-                    color: item.color,
-                  );
-                }).toList()),
+                child: Wrap(
+                direction: Axis.horizontal,
+                runSpacing: 20,
+                spacing: 20,
+                children: items.map((item) {
+                    return RecentCardDefault(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(item.title, style: TypographyStyles.cardTitle),
+                          Expanded(child: SizedBox()),
+                          Row(
+                            children: Utils.childrenWithSeparator('row', size: 5, children: item.icons)
+                          )
+                        ],
+                      ),
+                      color: item.color,
+                    );
+                  }).toList()
+                ),
               )
             : SizedBox();
       },

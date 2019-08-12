@@ -38,11 +38,7 @@ class Home extends StatelessWidget {
               HomeHeader(),
               Separator(),
               SizedBox(height: 20),
-              Container(
-                height: 42,
-                child: ListView(
-                    scrollDirection: Axis.horizontal, children: buildButtons()),
-              ),
+              ChipsRow(),
               SizedBox(height: 20),
               RecommendedRow(),
               SizedBox(height: 20),
@@ -57,14 +53,23 @@ class Home extends StatelessWidget {
       )
     ]);
   }
+}
 
-  List<Widget> buildButtons() {
-    return Utils.childrenWithSeparator('row', size: 15, children: [
-      AppChip(text: 'Insomnia'),
-      AppChip(text: 'Baby Sleep', isSelected: false),
-      AppChip(text: 'Sadness', isSelected: false),
-      AppChip(text: 'Anxiety', isSelected: false),
-    ]);
+class ChipsRow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 42,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: Utils.childrenWithSeparator('row', size: 15, children: [
+          AppChip(text: 'Insomnia'),
+          AppChip(text: 'Baby Sleep', isSelected: false),
+          AppChip(text: 'Sadness', isSelected: false),
+          AppChip(text: 'Anxiety', isSelected: false),
+        ])
+      ),
+    );
   }
 }
 

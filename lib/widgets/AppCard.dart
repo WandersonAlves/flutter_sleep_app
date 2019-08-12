@@ -5,7 +5,13 @@ class AppCard extends StatelessWidget {
   // Use to set the default border for main container and ClipRRect
   final BorderRadius _defaultBorderRadius = BorderRadius.circular(20);
   final Color color;
+  /// The amount of width to multiply screen width
+  ///
+  /// Use values less than 1
   final double widthMultiplier;
+   /// The amount of height to multiply screen height
+  ///
+  /// Use values less than 1
   final double heightMultiplier;
   final Widget body;
 
@@ -28,7 +34,9 @@ class AppCard extends StatelessWidget {
         builder: (context, constraints) {
           final height = constraints.maxHeight;
           final width = constraints.maxWidth;
-
+          // ClipRRect is like a container, but uses only the visible area of parent
+          // We need this because we use a BorderRadius on parent container
+          // Without this, everything inside the Stack would be above the Container with BorderRadius
           return ClipRRect(
             borderRadius: _defaultBorderRadius,
             child: Stack(
@@ -56,6 +64,7 @@ class AppCard extends StatelessWidget {
                         shape: BoxShape.circle),
                   ),
                 ),
+                // Lastly but not least, add InkWell to the card and a padding for the body
                 Positioned.fill(
                   child: Material(
                     color: Colors.transparent,

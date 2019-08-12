@@ -64,7 +64,8 @@ class RecommendedCards extends StatelessWidget {
                     ),
                     color: item.color,
                   );
-                }).toList()),
+                }).toList()
+              ),
             )
             : SizedBox();
       },
