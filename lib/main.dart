@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_sleep_app/styles/Colors.dart';
 import 'package:flutter_sleep_app/views/Home.dart';
 import 'package:flutter_sleep_app/widgets/AppIcon.dart';
@@ -16,9 +15,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-      statusBarColor: Colors.transparent
-    ));
 
     return MaterialApp(
         title: 'Sleep Well',
